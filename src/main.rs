@@ -112,6 +112,8 @@ fn main() {
         // Show ball in new position
         window.mvaddch(game.ball.y as i32, game.ball.x as i32, 'o');
         window.refresh(); // Update the screen
+
+        // Wait between moves (it doesn't block input key reading)
         window.timeout(SLEEP_DURATION);
 
         match window.getch() {
@@ -148,6 +150,6 @@ fn render_initial_game(window: &pancurses::Window, game: &Game) {
     window.border('|', '|', '-', '-', '+', '+', '+', '+');
     // Render ball in initial position
     window.mvaddch(game.ball.y as i32, game.ball.x as i32, 'o');
+    // Show updates on screen
     window.refresh();
-    // Update the screen
 }
