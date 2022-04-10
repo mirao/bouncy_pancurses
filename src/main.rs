@@ -93,6 +93,9 @@ fn main() {
     // Show initial game state
     render_initial_game(&window, &game);
 
+    // How long to wait on input key after move is done - therefore it's delay between moves
+    window.timeout(SLEEP_DURATION);
+
     loop {
         // Hide ball in old position
         window.mvaddch(game.ball.y, game.ball.x, ' ');
@@ -101,9 +104,6 @@ fn main() {
         // Show ball in new position
         window.mvaddch(game.ball.y, game.ball.x, 'o');
         window.refresh(); // Update the screen
-
-        // Wait between moves (it doesn't block input key reading)
-        window.timeout(SLEEP_DURATION);
 
         match window.getch() {
             // Quit game
